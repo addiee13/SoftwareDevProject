@@ -217,15 +217,15 @@
     - Test percentage validation
     - _Requirements: 4.1, 4.2, 4.5_
 
-- [-] 12. Write integration tests with test database
-  - [-] 12.1 Set up test database
+- [x] 12. Write integration tests with test database
+  - [x] 12.1 Set up test database
     - Create employeeData_test database
     - Create test schema matching production
     - Create test data setup and teardown methods
     - Configure test database.properties
     - _Requirements: 8.1_
   
-  - [ ] 12.2 Create EmployeeRepositoryTest class
+  - [x] 12.2 Create EmployeeRepositoryTest class
     - Test save() inserts employee and returns generated empId
     - Test findById() retrieves correct employee
     - Test findByName() returns matching employees
@@ -236,21 +236,21 @@
     - Verify affected row counts
     - _Requirements: 2.1, 2.2, 2.3, 3.1, 3.2, 3.3, 4.3_
   
-  - [ ] 12.3 Create PayStatementRepositoryTest class
+  - [x] 12.3 Create PayStatementRepositoryTest class
     - Test findByEmployeeId() returns all pay statements for employee
     - Test getTotalPayByJobTitle() returns correct aggregations
     - Test getTotalPayByDivision() returns correct aggregations
     - Verify calculations match expected totals
     - _Requirements: 5.3, 6.2, 6.3, 7.2, 7.3_
   
-  - [ ] 12.4 Create service layer integration tests
+  - [x] 12.4 Create service layer integration tests
     - Test EmployeeService.searchEmployee() with various search types
     - Test EmployeeService.addEmployee() with validation
     - Test SalaryService.applySalaryIncrease() with transaction rollback
     - Test ReportService methods return correct data
     - _Requirements: 2.4, 3.4, 4.3, 5.4, 6.4, 7.4_
 
-- [ ] 13. Create system test cases document
+- [x] 13. Create system test cases document
   - Document Test Case 1: Search Employee (by name, SSN, empId) with expected results and pass/fail criteria
   - Document Test Case 2: Update Employee Data with before/after database verification
   - Document Test Case 3: Salary Update by Range (3.2% for salary >= 58000 and < 105000) with verification of affected employees
