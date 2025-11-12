@@ -259,8 +259,8 @@
   - Add screenshots or console output examples
   - _Requirements: 2.1, 2.2, 2.3, 2.4, 3.2, 4.1, 4.2, 4.3, 4.4_
 
-- [ ]* 14. Implement JavaFX GUI (optional alternative to console)
-  - [ ]* 14.1 Create JavaFxUI class extending UserInterface
+- [x]* 14. Implement JavaFX GUI (optional alternative to console)
+  - [x]* 14.1 Create JavaFxUI class extending UserInterface
     - Set up JavaFX Application with Stage and Scene
     - Create main menu with buttons for each feature
     - Implement handleSearchEmployee() with form inputs and TableView for results
@@ -273,25 +273,25 @@
     - Style UI with CSS for professional appearance
     - _Requirements: 9.1, 9.2, 9.3, 9.4, 9.5_
   
-  - [ ]* 14.2 Update Main class to support UI selection
+  - [x]* 14.2 Update Main class to support UI selection
     - Add command-line argument or configuration to choose between Console and JavaFX UI
     - Instantiate appropriate UI implementation
     - _Requirements: 9.1_
 
-- [ ] 15. Create UML diagrams
-  - [ ] 15.1 Create Use Case Diagram - Overall System
+- [x] 15. Create UML diagrams
+  - [x] 15.1 Create Use Case Diagram - Overall System
     - Show Administrator actor
     - Show use cases: Search Employee, Add Employee, Update Employee, Delete Employee, Update Salary by Range, Generate Reports
     - Show relationships between use cases
     - _Requirements: All_
   
-  - [ ] 15.2 Create Use Case Diagram - Reporting
+  - [x] 15.2 Create Use Case Diagram - Reporting
     - Show Administrator actor
     - Show use cases: Generate Employee Report, Generate Pay by Job Title Report, Generate Pay by Division Report
     - Show include relationships if applicable
     - _Requirements: 5.1, 6.1, 7.1_
   
-  - [ ] 15.3 Create Class Diagram
+  - [x] 15.3 Create Class Diagram
     - Show all classes: model, repository, service, ui, util packages
     - Show inheritance relationships (UserInterface → ConsoleUI/JavaFxUI, Repository → concrete repositories)
     - Show associations between classes (services use repositories, UI uses services)
@@ -299,29 +299,29 @@
     - Show interfaces and abstract classes with proper notation
     - _Requirements: All_
   
-  - [ ] 15.4 Create Sequence Diagram - Overall System (Search Employee)
+  - [x] 15.4 Create Sequence Diagram - Overall System (Search Employee)
     - Show interaction: User → ConsoleUI → EmployeeService → EmployeeRepository → Database
     - Show method calls and return values
     - Show database query execution
     - _Requirements: 2.1, 2.2, 2.3, 2.4_
   
-  - [ ] 15.5 Create Sequence Diagram - Reporting
+  - [x] 15.5 Create Sequence Diagram - Reporting
     - Show interaction: User → ConsoleUI → ReportService → PayStatementRepository → Database
     - Show data aggregation and formatting
     - Show return of formatted report
     - _Requirements: 5.1, 6.1, 7.1_
   
-  - [ ] 15.6 Create Sequence Diagram - Update Employee
+  - [x] 15.6 Create Sequence Diagram - Update Employee
     - Show validation flow and transaction management
     - Show rollback on error scenario
     - _Requirements: 3.2, 3.4_
   
-  - [ ] 15.7 Create Sequence Diagram - Salary Update by Range
+  - [x] 15.7 Create Sequence Diagram - Salary Update by Range
     - Show bulk update with transaction control
     - Show affected row count return
     - _Requirements: 4.1, 4.2, 4.3, 4.4_
   
-  - [ ] 15.8 Create Sequence Diagram - Delete Employee
+  - [x] 15.8 Create Sequence Diagram - Delete Employee
     - Show cascading delete of pay statements
     - Show transaction management
     - _Requirements: 3.3_

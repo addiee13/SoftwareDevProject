@@ -5,43 +5,36 @@ import com.companyz.ems.repository.PayStatementRepository;
 import com.companyz.ems.service.EmployeeService;
 import com.companyz.ems.service.ReportService;
 import com.companyz.ems.service.SalaryService;
-import com.companyz.ems.ui.ConsoleUI;
 import com.companyz.ems.ui.JavaFxUI;
-import com.companyz.ems.ui.UserInterface;
 import com.companyz.ems.util.DatabaseConnection;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 /**
- * Main entry point for the Employee Management System.
- * Initializes all components and starts the user interface.
- * Supports both Console and JavaFX GUI modes.
- * 
- * Usage:
- * - Console mode (default): java com.companyz.ems.Main
- * - JavaFX mode: java com.companyz.ems.Main --gui
+ * JavaFX Application launcher for the Employee Management System.
+ * Separate launcher to properly initialize JavaFX on macOS.
  * 
  * @author Company Z Development Team
  * @version 1.0
  */
-public class Main extends Application {
+public class JavaFxLauncher extends Application {
     
     private static EmployeeService employeeService;
     private static ReportService reportService;
     private static SalaryService salaryService;
     
     /**
-     * Main method - application entry point.
+     * Main method to launch JavaFX application.
      * 
-     * @param args command line arguments: --gui for JavaFX mode, otherwise Console mode
+     * @param args command line arguments
      */
     public static void main(String[] args) {
+        System.out.println("Employee Management System - JavaFX Mode");
+        System.out.println("Initializing...");
+        
         try {
             // Test database connection
-            System.out.println("Employee Management System - Starting...");
-            System.out.println("Connecting to database...");
-            
             DatabaseConnection dbConnection = DatabaseConnection.getInstance();
             if (!dbConnection.testConnection()) {
                 System.err.println("ERROR: Failed to connect to database.");
@@ -62,21 +55,14 @@ public class Main extends Application {
             reportService = new ReportService(employeeRepository, payStatementRepository);
             salaryService = new SalaryService(employeeRepository);
             
-            // Check if GUI mode is requested
-            boolean useGUI = args.length > 0 && args[0].equals("--gui");
+            System.out.println("Services initialized successfully!");
+            System.out.println("Launching JavaFX GUI...");
             
-            if (useGUI) {
-                System.out.println("Starting JavaFX GUI mode...");
-                launch(args);
-            } else {
-                System.out.println("Starting Console mode...");
-                System.out.println("(Use --gui argument to start in GUI mode)");
-                UserInterface ui = new ConsoleUI(employeeService, reportService, salaryService);
-                ui.start();
-            }
+            // Launch JavaFX
+            launch(args);
             
         } catch (Exception e) {
-            System.err.println("\nFATAL ERROR: Application failed to start");
+            System.err.println("ERROR: Failed to initialize application");
             System.err.println("Error: " + e.getMessage());
             e.printStackTrace();
             System.exit(1);
@@ -84,14 +70,29 @@ public class Main extends Application {
     }
     
     /**
-     * JavaFX Application start method.
-     * Called when running in GUI mode.
+     * JavaFX start method - called by JavaFX framework.
      * 
      * @param primaryStage the primary stage
      */
     @Override
     public void start(Stage primaryStage) {
-        JavaFxUI javaFxUI = new JavaFxUI(employeeService, reportService, salaryService);
-        javaFxUI.start(primaryStage);
+        try {
+            System.out.println("Creating JavaFX UI...");
+            JavaFxUI ui = new JavaFxUI(employeeService, reportService, salaryService);
+            ui.start(primaryStage);
+            System.out.println("JavaFX GUI launched successfully!");
+        } catch (Exception e) {
+            System.err.println("ERROR: Failed to start JavaFX UI");
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+    
+    /**
+     * Called when the application is stopped.
+     */
+    @Override
+    public void stop() {
+        System.out.println("Application closing...");
     }
 }
